@@ -18,6 +18,8 @@ func main() {
     }
 
     r := gin.Default()
+    r.ForwardedByClientIP = true
+    r.SetTrustedProxies([]string{"127.0.0.1"})
 
     chatHandler := handlers.NewChatHandler()
     r.GET("/", func(c *gin.Context) {
