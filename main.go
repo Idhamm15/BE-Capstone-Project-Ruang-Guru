@@ -11,7 +11,7 @@ import (
 
 func main() {
     // Set mode release jika tidak dalam debug
-	gin.SetMode(gin.ReleaseMode)
+	// gin.SetMode(gin.ReleaseMode)
 
     if err := godotenv.Load(); err != nil {
         log.Fatalf("Error loading .env file: %v", err)
