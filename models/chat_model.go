@@ -8,6 +8,15 @@ type Part struct {
     Text string `json:"text"`
 }
 
+type Message struct {
+    Role  string `json:"role"`
+    Parts []Part `json:"parts"`
+}
+
+type ChatHistory struct {
+    Messages []Message `json:"messages"`
+}
+
 type Content struct {
     Role  string `json:"role"`
     Parts []Part `json:"parts"`

@@ -1,11 +1,13 @@
 package handlers
 
 import (
-    "net/http"
+	"fmt"
+	"net/http"
 
-    "github.com/gin-gonic/gin"
-    "be_capstone/models"
-    "be_capstone/services"
+	"be_capstone/models"
+	"be_capstone/services"
+
+	"github.com/gin-gonic/gin"
 )
 
 type ChatHandler struct {
@@ -24,6 +26,8 @@ func (h *ChatHandler) HandleChat(c *gin.Context) {
         c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
         return
     }
+
+    fmt.Printf("Received request: %+v\n", req)  // Debugging line
 
     resp, err := h.chatService.GenerateResponse(&req)
     if err != nil {
