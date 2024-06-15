@@ -30,5 +30,5 @@ func main() {
 	})
     r.POST("/chat", chatHandler.HandleChat)
 
-    r.Run(":8080")
+    r.Run(":5000")
 }
