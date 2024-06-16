@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+    "github.com/gin-contrib/cors"
 
 	"be_capstone/handlers"
 )
@@ -29,6 +30,14 @@ func main() {
     }
 
     r := gin.Default()
+
+    r.Use(cors.New(cors.Config{
+		AllowAllOrigins:  true,
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+	}))
 
     chatHandler := handlers.NewChatHandler()
     r.GET("/", func(c *gin.Context) {
